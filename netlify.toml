@@ -1,0 +1,20 @@
+[[headers]]
+  for = "/netlify/functions/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Headers = "Content-Type"
+    Access-Control-Allow-Methods = "GET, POST, OPTIONS"
+
+[build]
+    publish = "public"
+    command = "echo No build command"
+    node_bundler = "esbuild"
+
+[dev]
+    publish = "public"
+    node_bundler = "esbuild"
+
+[[redirects]]
+    from = "/api/*"
+    to = "/.netlify/functions/:splat"
+    status = 200
